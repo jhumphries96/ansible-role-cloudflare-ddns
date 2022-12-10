@@ -1,0 +1,21 @@
+{
+  "cloudflare": [
+    {
+      "authentication": {
+        "api_token": "{{ cloudflare_api_token }}"
+      },
+      "zone_id": "{{ cloudflare_zone_id }}",
+      "subdomains": [
+      {% for subdomain in subdomains %}
+        {
+          "name": "{{ subdomain.name }}",
+          "proxied": {{ subdomain.proxied|d('', true) }}
+        }{{ "," if not loop.last else "" }}      
+      {% endfor %}
+      ]
+    }
+  ],
+  "a": true,
+  "aaaa": false,
+  "purgeUnknownRecords": false
+}
