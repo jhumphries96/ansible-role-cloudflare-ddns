@@ -5,7 +5,7 @@
     path: "{{ cloudflare_ddns_conf_dir }}"
     state: directory
     owner: "{{ cloudflare_ddns_user }}"
-    group: "{{ cloudflare_ddns group }}"
+    group: "{{ cloudflare_ddns_group }}"
     mode: '0755'
 
 - name: Create cloudflare ddns config file
